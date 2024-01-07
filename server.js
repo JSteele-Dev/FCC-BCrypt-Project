@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt');
 
 //START_ASYNC -do not remove notes, place code between correct pair of notes.
 
-// hashing function to encrypt password
+// Async hashing function to encrypt password
 bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
     console.log(hash); // will console log the hashed password
 
@@ -28,7 +28,13 @@ bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
 
 //START_SYNC
 
+// sync hashing function to encrypt passwords, may cause lagon server side with high cost
+var hash = bcrypt.hashSync(myPlaintextPassword,saltRounds);
+console.log(hash); // logs the hashed password
 
+// compares the users input with the hashed passowrd
+var result = bcrypt.compareSync(myPlaintextPassword, hash);
+console.log(result); // will log true or false if password is the same
 
 //END_SYNC
 
