@@ -14,7 +14,15 @@ const bcrypt = require('bcrypt');
 
 //START_ASYNC -do not remove notes, place code between correct pair of notes.
 
+// hashing function to encrypt password
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+    console.log(hash); // will console log the hashed password
 
+    // compares the users input with hashes password
+    bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+        console.log(res); // will indicate true or false
+    })
+});
 
 //END_ASYNC
 
